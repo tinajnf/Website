@@ -119,6 +119,11 @@ export default function AboutPage() {
                 <Chip label="MUI" />
                 <Chip label="Next.js (learning)" />
                 <Chip label="Vite" />
+                <Chip label="Node.js" />
+                <Chip label="Javascript" />
+                <Chip label="iOS" />
+                <Chip label="Andriod" />
+                <Chip label="Java" />
               </Stack>
 
               <Stack direction="row" spacing={1.5} sx={{ mt: 3 }}>
