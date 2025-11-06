@@ -9,16 +9,16 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import AboutPage from "./AboutPage";
 import WeatherApp from "./WeatherApp";
 import TodoApp from "./TodoApp";
-// import ExpenseTrackerApp from "./ExpenseTrackerApp";
+import ExpenseTrackerApp from "./ExpenseTrackerApp";
 
 const componentsBySlug: Record<string, React.ComponentType> = {
   about: AboutPage,
   "weather-app": WeatherApp,
   "to-do-list": TodoApp,
-  // "expense-tracker": ExpenseTrackerApp,
-  // add more as you build them:
-  // "restaurant-finder": RestaurantFinderApp,
-  // "auth-with-firebase": AuthWithFirebasePage,
+  "expense-tracker": ExpenseTrackerApp,
+  //   add more as you build them:
+  //   "restaurant-finder": RestaurantFinderApp,
+  //   "auth-with-firebase": AuthWithFirebasePage,
 };
 
 export default function ProjectRouter() {
