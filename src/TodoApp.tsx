@@ -12,6 +12,11 @@ import {
   Typography,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import {
+  ListItemButton,
+  ListItemIcon,
+  ListItemSecondaryAction,
+} from "@mui/material";
 
 type Todo = { id: string; text: string; done: boolean };
 const STORAGE_KEY = "portfolio.todo";
@@ -79,24 +84,49 @@ export default function TodoApp() {
         {todos.map((t) => (
           <ListItem
             key={t.id}
+            disablePadding
+            divider
             secondaryAction={
-              <IconButton
-                edge="end"
-                onClick={() => remove(t.id)}
-                aria-label="delete"
-              >
-                <DeleteIcon />
-              </IconButton>
+              <ListItemSecondaryAction>
+                <IconButton
+                  edge="end"
+                  aria-label="delete"
+                  onClick={(e) => {
+                    e.stopPropagation(); // don't toggle row
+                    remove(t.id);
+                  }}
+                >
+                  <DeleteIcon color="error" />
+                </IconButton>
+              </ListItemSecondaryAction>
             }
           >
-            <Checkbox checked={t.done} onChange={() => toggle(t.id)} />
-            <ListItemText
-              primary={t.text}
-              sx={{
-                textDecoration: t.done ? "line-through" : "none",
-                color: t.done ? "text.disabled" : "inherit",
-              }}
-            />
+            <ListItemButton
+              onClick={() => toggle(t.id)} // click row to toggle
+              sx={{ "&:hover": { bgcolor: "action.hover" } }}
+            >
+              <ListItemIcon sx={{ minWidth: 40 }}>
+                <Checkbox
+                  edge="start"
+                  checked={t.done}
+                  onChange={(e) => {
+                    e.stopPropagation(); // don't bubble to row
+                    toggle(t.id);
+                  }}
+                />
+              </ListItemIcon>
+
+              <ListItemText
+                primary={t.text}
+                sx={{
+                  textDecoration: t.done ? "line-through" : "none",
+                  textDecorationThickness: "2px",
+                  color: t.done ? "text.disabled" : "text.primary",
+                  transition:
+                    "color 0.2s ease, text-decoration-color 0.2s ease",
+                }}
+              />
+            </ListItemButton>
           </ListItem>
         ))}
       </List>
