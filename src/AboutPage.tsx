@@ -137,7 +137,7 @@ export default function AboutPage() {
                 <Button
                   variant="outlined"
                   startIcon={<GitHubIcon />}
-                  href="https://github.com/your-username"
+                  href="https://github.com/tinajnf/Website"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
